@@ -302,7 +302,7 @@ def eckart_tunnel(E1, V0, V1, hw_b):
             # Approximations are used when numerical calculations fail
             return 1.0 if (E1 > max(V0, V1)) else 0.0
 
-# Predict the density of states function
+# Pre-calculate the density of states function
 def precompute_density(E_min, E_max, n_points, freqs_cm1, hindered_indices, barriers, moments, symmetries, rot_consts, sigma):
     E_min = max(0.0, E0 - 2.0)
     E_max = max(E_max_global_eV, E0 + 6.0)
