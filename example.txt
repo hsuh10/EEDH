@@ -1,0 +1,34 @@
+#Reactant frequency (cm⁻¹)
+reactant_freqs_cm1 = [
+205,231,515,654,699,837,937,958,1139,1335,1430,1711,3163,3187,3276
+]
+
+#Hindered rotor parameters (reactant)
+react_hind = [] # List of hindered rotor indices
+react_bar = [] # Barrier height (cm⁻¹)
+react_mom = [] # Moment of inertia (amu·Å²)
+react_sym = [] # Symmetry number
+react_rotational = [0.495, 0.09358, 0.07871] # Rotational constants (cm⁻¹)
+react_sigma=1 # Molecular symmetry number
+
+
+#Transition state frequency (cm⁻¹)
+ts_freqs_cm1 = [
+178,228,481,543,850,984,1011,1171,1384,1448,1495,3020,3168,3292
+]
+
+#Hindered rotor parameters (transition state)
+ts_hind = [] # Hindered rotor index
+ts_bar = [] # Barrier height (cm⁻¹)
+ts_mom = [] # Moment of inertia (amu·Å²)
+ts_sym = [] # Symmetry number
+ts_rotational = [0.353, 0.08, 0.068] # Rotational constants (cm⁻¹)
+ts_sigma=1 # Molecular symmetry number
+
+#Energy parameters (eV)
+E_total = 1.2861724 # Reference point
+E0 = 1.0291452 # Barrier height
+
+#Tunneling correction parameters
+imag_freq_cm1 = 617 # Magnitude of imaginary frequency (cm⁻¹)
+V1 = 2.859 # Product - side barrier height (eV)
