@@ -53,39 +53,28 @@ hindered_rotor_density_cache = {}
 # ====================== Function definition ======================
 def exact_enumeration_density_hybrid(freqs_cm1, hindered_indices, E_max_cm1, dE):
     n_bins = int(np.round(E_max_cm1 / dE)) + 1
-    cumulative = np.zeros(n_bins, dtype=np.float64)
-    cumulative[0] = 1.0  # The number of ground states is 1
+    counts = np.zeros(n_bins, dtype=np.float64)
+    harmonic_freqs = [f for i, f in enumerate(freqs_cm1) if i not in hindered_indices and f>1e-8]
 
-    harmonic_freqs = [f for i, f in enumerate(freqs_cm1) if i not in hindered_indices]
-
-    state_counter = Counter()
-    state_counter[0.0] = 1.0
-
+    state_counter = Counter({0.0: 1.0})
     for freq in harmonic_freqs:
-        if freq < 1e-5:
-            continue
-
         new_counter = Counter()
         max_n = int(E_max_cm1 / freq) + 1
-
-        for E_old, count in state_counter.items():
+        for E_old, count in list(state_counter.items()):
             for n in range(1, max_n + 1):
                 E_new = E_old + n * freq
-                if E_new > E_max_cm1 + 1e-6:
+                if E_new > E_max_cm1 + 1e-8:
                     break
                 E_new_quant = round(E_new / dE) * dE
                 new_counter[E_new_quant] += count
-
         state_counter.update(new_counter)
 
     for E, count in state_counter.items():
-        bin_index = int(round(E / dE))
-        if bin_index < n_bins:
-            cumulative[bin_index] += count
+        idx = int(round(E / dE))
+        if idx < n_bins:
+            counts[idx] += count
 
-    for i in range(1, n_bins):
-        cumulative[i] += cumulative[i - 1]
-
+    cumulative = np.cumsum(counts)
     density = np.diff(cumulative, prepend=0) / dE
     return density
 
