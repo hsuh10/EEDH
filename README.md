@@ -6,4 +6,4 @@ To use this code, you need to install the relevant libraries first:
 pip install numpy scipy matplotlib
 ```
 
-example.txt serves as the input file. The frequency lists of reactants and products are required. Among them, the reactant frequency list must exclude imaginary frequency modes and is also a required item. The energy barrier and reverse energy barrier are also required. The reference energy point refers to a certain total energy you are interested in; it is used to display the rate at this point on the screen and is also a required item. Hindered rotors and rotational constants are optional.
+example.txt serves as the input file. The frequency lists of reactants and TS are required. Among them, the TS frequency list must exclude imaginary frequency modes and is also a required item. The energy barrier and reverse energy barrier are also required. The reference energy point refers to a certain total energy you are interested in; it is only used to display the rate at this point on the screen and is also a required item. Hindered rotors and rotational constants are optional.
